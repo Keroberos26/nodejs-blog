@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const {engine} = require('express-handlebars');
+const { engine } = require('express-handlebars');
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -25,7 +25,7 @@ app.engine(
   }),
 );
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 route(app);
 
