@@ -24,7 +24,8 @@
   "homepage": "https://github.com/Keroberos26/nodejs-blog#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "express-handlebars": "^7.1.2"
+    "express-handlebars": "^7.1.2",
+    "mongoose": "^8.0.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
