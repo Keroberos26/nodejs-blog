@@ -14,6 +14,9 @@ const port = 4000;
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // HTTP Logger
 app.use(morgan('combined'));
 
