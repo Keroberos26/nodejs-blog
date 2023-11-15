@@ -1,0 +1,26 @@
+<div class="mt-2">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>#</th>
+      <th>Thumbnail</th>
+      <th>Tên khoá học</th>
+      <th>Mô tả</th>
+      <th colspan="3">Thời gian tạo</th>
+    </tr>
+    {{#each courses}}
+    <tr>
+      <td>{{sum @index 1}}</td>
+      <td><img src="{{this.image}}" alt=""></td>
+      <td>{{this.name}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.createdAt}}</td>
+      <td>
+        <a href="/courses/{{this._id}}/edit" class="btn btn-warning">Sửa</a>
+      </td>
+      <td>
+        <a href="#" class="btn btn-danger">Xoá</a>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</div>
