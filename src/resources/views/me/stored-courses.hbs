@@ -18,9 +18,45 @@
         <a href="/courses/{{this._id}}/edit" class="btn btn-warning">Sửa</a>
       </td>
       <td>
-        <a href="#" class="btn btn-danger">Xoá</a>
+        <a href="#" class="btn btn-danger" data-mdb-toggle="modal" data-mdb-id="{{this._id}}"
+          data-mdb-target="#deleteModal">Xoá</a>
       </td>
     </tr>
     {{/each}}
   </table>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Xoá khoá học?</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Bạn chắn chắn muốn xoá khoá học này?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="deleteBtn">Xoá bỏ</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<form name="delete-form" method="POST"></form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const form = document.forms['delete-form'];
+    var id;
+    deleteModal.addEventListener('show.mdb.modal', (e) => {
+      const button = e.relatedTarget;
+      id = button.getAttribute('data-mdb-id');
+    })
+    deleteBtn.onclick = () => {
+      form.action = `/courses/${id}?_method=DELETE`;
+      form.submit();
+    }
+  })
+</script>
